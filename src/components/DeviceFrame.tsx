@@ -262,6 +262,7 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
   
   // Handle power button long press
   const handleLongPowerPress = () => {
+    console.log('Power button long pressed!');
     if (bootState !== 'off') {
       setShowPowerMenu(true);
       playSound('/sounds/confirm.mp3', 0.5);
@@ -375,11 +376,20 @@ const DeviceFrame: React.FC<DeviceFrameProps> = ({
           
           {/* Power menu panel - now inside the device screen */}
           {showPowerMenu && bootState !== 'off' && screenState === 'on' && (
-            <PowerMenu 
-              onClose={() => setShowPowerMenu(false)}
-              onPowerOff={handlePowerOffAction}
-              onRestart={handleRestartAction}
-            />
+            <>
+              {/* Semi-transparent backdrop */}
+              <div 
+                className="absolute inset-0 bg-black/40 backdrop-blur-sm z-40"
+                onClick={() => setShowPowerMenu(false)}
+              ></div>
+              
+              {/* Power menu */}
+              <PowerMenu 
+                onClose={() => setShowPowerMenu(false)}
+                onPowerOff={handlePowerOffAction}
+                onRestart={handleRestartAction}
+              />
+            </>
           )}
         </div>
         

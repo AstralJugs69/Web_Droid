@@ -91,7 +91,7 @@ const DeviceButtons: React.FC<DeviceButtonsProps> = ({
     },
     onStart: () => {},
     onCancel: () => {},
-    threshold: 600
+    threshold: 400
   });
   
   // Handle power button click
