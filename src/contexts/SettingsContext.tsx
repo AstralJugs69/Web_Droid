@@ -176,7 +176,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
   
   const [colorMode, setColorModeState] = useState<ColorMode>(() => {
     const savedMode = localStorage.getItem('colorMode') as ColorMode | null;
-    return savedMode || 'light';
+    return savedMode || 'dark';
   });
   
   const [systemPrefersDark, setSystemPrefersDark] = useState<boolean>(
